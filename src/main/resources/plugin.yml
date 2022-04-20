@@ -1,0 +1,31 @@
+name: EnderGamePlugin
+version: '${project.version}'
+main: com.gagafeee.endergameplugin.Main
+api-version: 1.15
+prefix: [ EnderGamePL ]
+load: STARTUP
+authors: [ Gagafeee ]
+description: The Plugin in EnderGame
+website: web.mcendergame.tk
+commands:
+  group:
+    description: Main command for group
+  g:
+    aliases: group
+  party:
+    aliases: group
+  p:
+    aliases: group
+  push:
+    description: A push command
+  pushupdate:
+    description: update push function
+  teamupdate:
+    description: player team updater
+  join:
+    description: connect command
+  leveloperate:
+    description: make level operation
+  packinstall:
+    description: Auto Install pack
+
