@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="EnderGamePL">
+    <output-path>$PROJECT_DIR$/../../Doc/Minecraft/server/BigGame/srv/plugins/EG</output-path>
+    <root id="archive" name="EnderGamePL.jar">
+      <element id="module-output" name="EnderGamePL" />
+    </root>
+  </artifact>
+</component>
