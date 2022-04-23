@@ -1,12 +1,18 @@
 package com.gagafeee.endergameplugin.prophunt.commands;
 
+import com.gagafeee.endergameplugin.Main;
 import com.onarandombox.MultiverseCore.MultiverseCore;
 import com.onarandombox.MultiverseCore.api.MVWorldManager;
 import org.apache.commons.lang.math.RandomUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
+import org.bukkit.boss.BossBar;
+import org.bukkit.boss.KeyedBossBar;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Boss;
+import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.ScoreboardManager;
@@ -15,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Random;
 
 import static java.lang.Math.random;
@@ -22,6 +29,9 @@ import static java.lang.Math.random;
 public class prophunt implements CommandExecutor {
     MultiverseCore core = (MultiverseCore) Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
     MVWorldManager worldManager = core.getMVWorldManager();
+
+    String[][] Blocks = {{"Deepslate","Moss","Oak_log","Clay"},{},{},{},{},{}};
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if(args.length > 0){
@@ -62,6 +72,13 @@ public class prophunt implements CommandExecutor {
                     if(!finder.getScoreboardTags().contains("PHFORCENOTFINDER")){
                         finder.addScoreboardTag("finder");
                     }
+                    for (int i = 0; i < playerList.length; i++) {
+                        if(!playerList[i].getScoreboardTags().contains("finder")){
+                            String type = "PHB."+Blocks[SelectedMapId][(int) (Math.random() * Blocks[SelectedMapId].length)];
+                            playerList[i].addScoreboardTag(type);
+                            Bukkit.getPlayer("gagafeee").sendMessage("Block type of "+playerList[i].getName()+" :  " + type);
+                        }
+                    }
 
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "function prophunt:startnewgame");
                 }
@@ -91,6 +108,12 @@ public class prophunt implements CommandExecutor {
                         case "5" -> worldManager.unloadWorld("ptemple");
                     }
                 }
+            }
+            if(args[0].equals("updateBossBar")){
+                ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
+                Score score = scoreboardManager.getMainScoreboard().getObjective("PHFounded").getScore("Forest");
+                BossBar bar = Bukkit.getServer().getBossBar(new NamespacedKey(Main.getInstance(), "ph_forest"));
+                bar.setProgress(score.getScore()*1.0);
             }
         }
         return false;

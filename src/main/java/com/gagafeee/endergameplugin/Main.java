@@ -9,6 +9,7 @@ import com.gagafeee.endergameplugin.lobby.commands.join;
 import com.gagafeee.endergameplugin.main.LevelOperator;
 import com.gagafeee.endergameplugin.main.ressourcesPack;
 import com.gagafeee.endergameplugin.prophunt.commands.prophunt;
+import com.gagafeee.endergameplugin.prophunt.event.prophuntClick;
 import com.gagafeee.endergameplugin.quickmine.bat.BatEvents;
 import com.gagafeee.endergameplugin.quickmine.commands.Push;
 import com.gagafeee.endergameplugin.update.events.connect;
@@ -40,6 +41,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new connect(), this);
         getServer().getPluginManager().registerEvents(new BatEvents(),this);
         getServer().getPluginManager().registerEvents(new LobbyEvents(),this);
+        getServer().getPluginManager().registerEvents(new prophuntClick(), this);
 
 
         Bukkit.getConsoleSender().sendMessage("§7[§9"+getDescription().getName()+"§7]  "+ "§b --> §a Enabled Successful");
