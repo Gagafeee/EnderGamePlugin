@@ -28,4 +28,6 @@ commands:
     description: make level operation
   packinstall:
     description: Auto Install pack
+  prophunt:
+    description: all prophunt commands
 

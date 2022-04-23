@@ -8,6 +8,7 @@ import com.gagafeee.endergameplugin.lobby.LobbyEvents;
 import com.gagafeee.endergameplugin.lobby.commands.join;
 import com.gagafeee.endergameplugin.main.LevelOperator;
 import com.gagafeee.endergameplugin.main.ressourcesPack;
+import com.gagafeee.endergameplugin.prophunt.commands.prophunt;
 import com.gagafeee.endergameplugin.quickmine.bat.BatEvents;
 import com.gagafeee.endergameplugin.quickmine.commands.Push;
 import com.gagafeee.endergameplugin.update.events.connect;
@@ -32,6 +33,7 @@ public class Main extends JavaPlugin {
         getCommand("join").setExecutor(new join());
         getCommand("leveloperate").setExecutor(new LevelOperator());
         getCommand("packinstall").setExecutor(new ressourcesPack());
+        getCommand("prophunt").setExecutor(new prophunt());
 
 
         //Init Events

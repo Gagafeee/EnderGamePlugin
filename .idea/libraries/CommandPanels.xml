@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="CommandPanels">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/modules/CommandPanels.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
