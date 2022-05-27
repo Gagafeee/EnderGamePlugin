@@ -109,12 +109,12 @@ public class prophunt implements CommandExecutor {
                     }
                 }
             }
-            if(args[0].equals("updateBossBar")){
+            /*if(args[0].equals("updateBossBar")){
                 ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
                 Score score = scoreboardManager.getMainScoreboard().getObjective("PHFounded").getScore("Forest");
                 BossBar bar = Bukkit.getServer().getBossBar(new NamespacedKey(Main.getInstance(), "ph_forest"));
                 bar.setProgress(score.getScore()*1.0);
-            }
+            }*/
         }
         return false;
     }
@@ -122,15 +122,7 @@ public class prophunt implements CommandExecutor {
     public boolean mapIsAvailable(int mapId){
         ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
         Score score = scoreboardManager.getMainScoreboard().getObjective("PHMaps").getScore(String.valueOf(mapId));
-        switch (score.getScore()){
-            case 0:{
-                return true;
-            }
-            case 1:
-            default:{
-                return false;
-            }
-        }
+        return score.getScore() == 0;
     }
 
     public static Boolean[] addmap(int arraySize, Boolean[] arr, Boolean playerToAdd)

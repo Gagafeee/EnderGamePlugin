@@ -98,9 +98,7 @@ public class LobbyEvents implements Listener{
         {
             ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
             Score score = scoreboardManager.getMainScoreboard().getObjective("Location").getScore(event.getEntity().getName());
-            if(score.getScore() == 0 || score.getScore() == 1){
-                event.setCancelled(true);
-            }
+            if(score.getScore() == 0 || score.getScore() == 1 || score.getScore() == 3) event.setCancelled(true);
         }
     }
 }

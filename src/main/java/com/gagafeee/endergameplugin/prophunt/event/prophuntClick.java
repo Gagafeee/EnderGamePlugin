@@ -14,6 +14,7 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.util.Vector;
@@ -26,6 +27,7 @@ public class prophuntClick implements Listener {
 
     @EventHandler
     public void onEntityClick(PlayerInteractEntityEvent event){
+        if(event.getHand() == EquipmentSlot.HAND) return;
         Player player = event.getPlayer();
         ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
 
@@ -33,7 +35,7 @@ public class prophuntClick implements Listener {
         Score isEntity = scoreboardManager.getMainScoreboard().getObjective("PHtarget").getScore(event.getPlayer().getName());
 
         if(score.getScore() == 1 && player.getScoreboardTags().contains("finder")){
-            if(event.getRightClicked().getType() == EntityType.FALLING_BLOCK){
+            if(event.getRightClicked().getType() == EntityType.FALLING_BLOCK || event.getRightClicked().getType() == EntityType.PLAYER){
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "execute as " + event.getPlayer().getName() +" run function prophunt:map/0/find");
                 isEntity.setScore(1);
             }
