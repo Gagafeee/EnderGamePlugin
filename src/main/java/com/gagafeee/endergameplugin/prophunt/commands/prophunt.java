@@ -30,7 +30,14 @@ public class prophunt implements CommandExecutor {
     MultiverseCore core = (MultiverseCore) Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
     MVWorldManager worldManager = core.getMVWorldManager();
 
-    String[][] Blocks = {{"Deepslate","Moss","Oak_log","Clay"},{},{},{},{},{}};
+    String[][] Blocks = {
+            {"Deepslate","Moss","Oak_log","Clay"},
+            {},
+            {},
+            {"Prismarine","Raw_gold_block","Stone","Twisting_vine"},
+            {},
+            {"Orange_terracotta","Sandstone_stairs","Gold_block","Blue_terracotta"}
+    };
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {

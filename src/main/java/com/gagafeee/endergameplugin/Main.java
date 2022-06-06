@@ -1,11 +1,14 @@
 package com.gagafeee.endergameplugin;
 
 
+import com.gagafeee.endergameplugin.database.DatabaseExecutor;
+import com.gagafeee.endergameplugin.database.database;
 import com.gagafeee.endergameplugin.group.commands.Group;
 import com.gagafeee.endergameplugin.group.functions.PushUpdate;
 import com.gagafeee.endergameplugin.group.functions.Team;
 import com.gagafeee.endergameplugin.lobby.LobbyEvents;
 import com.gagafeee.endergameplugin.lobby.commands.join;
+import com.gagafeee.endergameplugin.main.MainEvents;
 import com.gagafeee.endergameplugin.main.LevelOperator;
 import com.gagafeee.endergameplugin.main.ressourcesPack;
 import com.gagafeee.endergameplugin.prophunt.commands.prophunt;
@@ -15,8 +18,9 @@ import com.gagafeee.endergameplugin.quickmine.commands.Push;
 import com.gagafeee.endergameplugin.update.events.connect;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.IOException;
 
 public class Main extends JavaPlugin {
     private static Main instance;
@@ -35,6 +39,7 @@ public class Main extends JavaPlugin {
         getCommand("leveloperate").setExecutor(new LevelOperator());
         getCommand("packinstall").setExecutor(new ressourcesPack());
         getCommand("prophunt").setExecutor(new prophunt());
+        getCommand("db").setExecutor(new DatabaseExecutor());
 
 
         //Init Events
@@ -42,6 +47,8 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BatEvents(),this);
         getServer().getPluginManager().registerEvents(new LobbyEvents(),this);
         getServer().getPluginManager().registerEvents(new prophuntClick(), this);
+        getServer().getPluginManager().registerEvents(new MainEvents(), this);
+
 
 
         Bukkit.getConsoleSender().sendMessage("§7[§9"+getDescription().getName()+"§7]  "+ "§b --> §a Enabled Successful");

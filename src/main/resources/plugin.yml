@@ -30,4 +30,6 @@ commands:
     description: Auto Install pack
   prophunt:
     description: all prophunt commands
+  db:
+    description: a command to interract with the database
 

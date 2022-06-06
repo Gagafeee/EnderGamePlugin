@@ -36,7 +36,8 @@ public class prophuntClick implements Listener {
 
         if(score.getScore() == 1 && player.getScoreboardTags().contains("finder")){
             if(event.getRightClicked().getType() == EntityType.FALLING_BLOCK || event.getRightClicked().getType() == EntityType.PLAYER){
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "execute as " + event.getPlayer().getName() +" run function prophunt:map/0/find");
+
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "execute as " + event.getPlayer().getName() +" run function prophunt:map/clickselect");
                 isEntity.setScore(1);
             }
         }
