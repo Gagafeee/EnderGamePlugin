@@ -26,7 +26,7 @@ commands:
     description: connect command
   leveloperate:
     description: make level operation
-  packinstall:
+  pack:
     description: Auto Install pack
   prophunt:
     description: all prophunt commands

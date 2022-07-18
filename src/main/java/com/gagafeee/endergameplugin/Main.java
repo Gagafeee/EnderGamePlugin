@@ -2,7 +2,6 @@ package com.gagafeee.endergameplugin;
 
 
 import com.gagafeee.endergameplugin.database.DatabaseExecutor;
-import com.gagafeee.endergameplugin.database.database;
 import com.gagafeee.endergameplugin.group.commands.Group;
 import com.gagafeee.endergameplugin.group.functions.PushUpdate;
 import com.gagafeee.endergameplugin.group.functions.Team;
@@ -20,13 +19,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
+import java.io.File;
 
 public class Main extends JavaPlugin {
     private static Main instance;
 
     @Override
     public void onEnable() {
+        //set folder
+        File f = new File(this.getDataFolder() + "/");
+        if(!f.exists()){f.mkdir();}
+
         //Init Commands
         getCommand("group").setExecutor(new Group());
         getCommand("g").setExecutor(new Group());
@@ -37,7 +40,7 @@ public class Main extends JavaPlugin {
         getCommand("teamupdate").setExecutor(new Team());
         getCommand("join").setExecutor(new join());
         getCommand("leveloperate").setExecutor(new LevelOperator());
-        getCommand("packinstall").setExecutor(new ressourcesPack());
+        getCommand("pack").setExecutor(new ressourcesPack());
         getCommand("prophunt").setExecutor(new prophunt());
         getCommand("db").setExecutor(new DatabaseExecutor());
 
@@ -49,12 +52,14 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new prophuntClick(), this);
         getServer().getPluginManager().registerEvents(new MainEvents(), this);
 
-
-
         Bukkit.getConsoleSender().sendMessage("§7[§9"+getDescription().getName()+"§7]  "+ "§b --> §a Enabled Successful");
         Bukkit.getConsoleSender().sendMessage("§7[§9"+getDescription().getName()+"§7]  "+ "§b --> §a Plugin Version is : §6" + getDescription().getVersion());
         instance = this;
         super.onEnable();
+        int ReplaceEventInt = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+            public void run() {
+                LobbyEvents.UpdateSkins();
+            }}, 0, 2);
     }
 
     @Override
@@ -70,8 +75,6 @@ public class Main extends JavaPlugin {
     public static Main getInstance() {
         return instance;
     }
-
-
 
 
 }

@@ -32,7 +32,7 @@ public class prophunt implements CommandExecutor {
 
     String[][] Blocks = {
             {"Deepslate","Moss","Oak_log","Clay"},
-            {},
+            {"Deepslate","Moss","Oak_log","Clay"},
             {},
             {"Prismarine","Raw_gold_block","Stone","Twisting_vine"},
             {},
